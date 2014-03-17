@@ -111,5 +111,5 @@ $ grunt
 - v0.1 - Started the first release
 
 ## License
-Copyright (c) 2014 Leo Haddad Carneiro  
+Copyright (c) 2014 Léo Haddad M. C. Carneiro  
 Licensed under the MIT license.

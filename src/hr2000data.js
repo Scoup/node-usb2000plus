@@ -4,10 +4,16 @@
  * @link http://www.oceanoptics.com/technical/engineering/OEM%20Data%20Sheet%20--%20HR2000+.pdf
  */
 function HR2000Data(callback) {
+	var self = this
+	this.errorTimeout = 5000
 	this.totalFrames = 8
 	this.output = []
 	this.callback = callback ? callback : function() {};
 	this.counter = 0
+	this.timeout = setTimeout(function(){
+		var error = "Timeout on request " + self.errorTimeout + "ms"
+		self.callback(error, null)
+	}, this.errorTimeout)
 }
 
 /**
@@ -27,8 +33,10 @@ HR2000Data.prototype.addData = function(data) {
 	data = this.convertData(data)
 	this.output.push(data)
 	this.counter++
-	if(this.counter === this.totalFrames)
-		this.callback(self.getData())
+	if(this.counter === this.totalFrames){
+		clearTimeout(this.timeout)
+		this.callback(null, self.getData())
+	}
 }
 
 /**

@@ -1,6 +1,6 @@
 'use strict';
 
-var hr2000 = require('../lib/hr2000.js');
+// var hr2000 = require('../lib/hr2000.js');
 
 /*
   ======== A Handy Little Nodeunit Reference ========

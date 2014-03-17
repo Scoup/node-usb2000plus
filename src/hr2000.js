@@ -2,7 +2,7 @@
  * node-hr2000
  * https://github.com/leo/node-hr2000
  *
- * Copyright (c) 2014 Leo Haddad Carneiro
+ * Copyright (c) 2014 Léo Haddad M. C. Carneiro 
  * Licensed under the MIT license.
  */
 
@@ -38,7 +38,8 @@ var HR2000Factory = function() {
 
 	function HR2000(options) {
 		this._internal = {
-			claimed: false
+			claimed: false,
+			busy: false
 		}
 
 		// this.endpoints = new Endpoints()
@@ -72,10 +73,15 @@ var HR2000Factory = function() {
 	}
 
 	HR2000.prototype.requestSpectra = function(callback) {
+		var self = this
 		var func = this.funcs.getByName('requestSpectra')
+		var calb = function(error, callback) {
+			self._internal.busy = false
+			callback(error, data)
+		}
 
 		this.spectroData = new HR2000Data(callback)
-		this.genericFunction.call(this, callback, func)
+		this.genericFunction.call(this, calb, func)
 	}
 
 	/**
@@ -136,16 +142,22 @@ var HR2000Factory = function() {
 	 * @extraData - ByteArray - a array of extra datas, some functions need it
 	 */
 	HR2000.prototype.genericFunction = function(callback, data, extraData) {
+		if(this._internal.busy){
+			var error = "The spectrometer is busy"
+			callback(error, null)
+			return
+		}
+
 		var EP1Out = this.EP1Out
 		var buffer = new Buffer(1)
 		buffer[0] = data
-		if(extraData !== null) {
+		if(extraData !== undefined) {
 			buffer = new Buffer(extraData.length + 1)
 			buffer[0] = data
 			buffer.push(extraData)
 		}
 
-		if(callback !== null) 
+		if(typeof(callback) === 'function') 
 			this.callback = callback
 		else
 			this.callback = null

@@ -39,10 +39,10 @@ function HR2000Funcs() {
 	]
 }
 
-HR2000Funcs.prototype.getByType = function(type, name) {
+HR2000Funcs.prototype.getByType = function(type, value) {
 	var size = this.pfuncs.length
 	for(var i = 0; i < size; i++) {
-		if(name === this.pfuncs[i][type])
+		if(value === this.pfuncs[i][type])
 			return this.pfuncs[i]
 	}
 	return null
