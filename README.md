@@ -3,8 +3,14 @@
 Module to comunicate with Oceanoptics Spectrometer USB2000+
 
 ## Getting Started
-Install the module with: `npm install usb2000plus`
 
+### [npm](https://www.npmjs.org/) install
+`$ npm install usb2000plus`
+
+### Manual install
+Just add the node_modules: [node-usb](https://github.com/nonolith/node-usb)
+
+### Config
 This module is still in alpha. (do not use in production)
 
 ```javascript
@@ -50,17 +56,32 @@ Without the permission you will need run your node with sudo (*not recommended)
 
 ### .requestSpectra(callback) - Request spectra data
 ```javascript
-usb2000.requestSpectra(function(data) {
-	console.log(data)
+usb2000.requestSpectra(function(error, data) {
+	if(error === null)
+		console.log(data)
+	else
+		console.log(error)
 })
 ```
 
 ### .queryInformation(callback) - Query Information
 ```javascript
-usb2000.queryInformation(function(data) {
-	console.log(data)
+usb2000.queryInformation(function(error, data) {
+	if(error === null)
+		console.log(data)
+	else
+		console.log(error)
 })
 ```
+
+### .setIntegrationTime(callback, value) - Set Integration Time in us.
+```javascript
+usb2000.setIntegrationTime(function(error, data){
+	if(error !== null)
+		console.log("Integration time changed. There is no data callback")
+}, 3000000)
+```
+Obs: 3000000 = 3s
 
 ## List of commands
 ```
@@ -99,7 +120,6 @@ $ grunt
 - Add documentation
 - Add some options to customize the data input/output
 - Verify all spectrometer functions
-- Add busy status while doing query
 
 ## Release History
 - v0.1 - Started the first release
