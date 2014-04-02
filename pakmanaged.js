@@ -1957,7 +1957,7 @@ var global = Function("return this;")();
   provide("underscore", module.exports);
 }(global));
 
-// pakmanager:hr2000
+// pakmanager:usb2000plus
 (function (context) {
   
   var module = { exports: {} }, exports = module.exports
@@ -1965,8 +1965,8 @@ var global = Function("return this;")();
     ;
   
   /*
-     * node-hr2000
-     * https://github.com/leo/node-hr2000
+     * node-usb2000plus
+     * https://github.com/Scoup/node-usb2000plus
      *
      * Copyright (c) 2014 Leo Haddad Carneiro
      * Licensed under the MIT license.
@@ -2247,5 +2247,5 @@ var global = Function("return this;")();
     	return this.pfuncs
     }
     
-  provide("hr2000", module.exports);
+  provide("usb2000plus", module.exports);
 }(global));

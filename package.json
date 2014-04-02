@@ -1,26 +1,26 @@
 {
-  "name": "hr2000",
-  "description": "Module to comunicate with Spectrometer HR2000+",
+  "name": "usb2000plus",
+  "description": "Module to comunicate with Spectrometer USB2000+",
   "version": "0.1.0",
-  "homepage": "https://github.com/scoup/node-hr2000",
+  "homepage": "https://github.com/scoup/node-usb2000plus",
   "author": {
     "name": "Léo Haddad M. C. Carneiro",
     "email": "scoup001@gmail.com"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/Scoup/node-hr2000.git"
+    "url": "git://github.com/Scoup/node-usb2000plus.git"
   },
   "bugs": {
-    "url": "https://github.com/Scoup/node-hr2000/issues"
+    "url": "https://github.com/Scoup/node-usb2000plus/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/Scoup/node-hr2000/blob/master/LICENSE-MIT"
+      "url": "https://github.com/Scoup/node-usb2000plus/blob/master/LICENSE-MIT"
     }
   ],
-  "main": "lib/hr2000",
+  "main": "lib/usb2000plus",
   "engines": {
     "node": ">= 0.8.0"
   },
@@ -40,5 +40,5 @@
     "grunt": "~0.4.4"
   },
   "readmeFilename": "Readme.md",
-  "keywords": ["hr2000", "hr2000+", "hr2000plus"]
+  "keywords": ["usb2000", "usb2000+", "usb2000plus"]
 }

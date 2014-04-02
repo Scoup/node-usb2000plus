@@ -4,9 +4,9 @@ module.exports = function(grunt) {
         
     // Project configuration.
     grunt.initConfig({
-        nodeunit: {
-            files: ['test/**/*_test.js'],
-        },
+        // nodeunit: {
+        //     files: ['test/**/*_test.js'],
+        // },
         jshint: {
             options: {
                 jshintrc: '.jshintrc'
@@ -44,7 +44,7 @@ module.exports = function(grunt) {
             '<%= grunt.template.today("yyyy-mm-dd") %> */'
         },
         concat: {
-            'lib/hr2000.js': ['<banner>', 'src/*.js']
+            'lib/usb2000.js': ['<banner>', 'src/*.js']
         }
     });
 

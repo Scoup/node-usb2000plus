@@ -1,21 +1,21 @@
-# node-hr2000 [![Build Status](https://secure.travis-ci.org/Scoup/node-hr2000.png?branch=master)](http://travis-ci.org/Scoup/node-hr2000)
+# node-usb2000plus
 
-Module to comunicate with Oceanoptics Spectrometer HR2000+
+Module to comunicate with Oceanoptics Spectrometer USB2000+
 
 ## Getting Started
-Install the module with: `npm install hr2000`
+Install the module with: `npm install usb2000plus`
 
-This module is still in alpha. (do not use in production, api will be change soon to errors callback)
+This module is still in alpha. (do not use in production)
 
 ```javascript
-var HR2000 = require('hr2000').HR2000;
-var hr2000 = new HR2000()
+var USB2000 = require('usb2000plus').USB2000;
+var usb2000plus = new USB2000()
 ```
 
 With options:
 ```javascript
-var HR2000 = require('hr2000').HR2000;
-var hr2000 = new HR2000({
+var USB2000 = require('usb2000plus').USB2000;
+var usb2000 = new USB2000({
 	VID: 0x2457,
 	PID: 0x101E
 })
@@ -50,14 +50,14 @@ Without the permission you will need run your node with sudo (*not recommended)
 
 ### .requestSpectra(callback) - Request spectra data
 ```javascript
-hr2000.requestSpectra(function(data) {
+usb2000.requestSpectra(function(data) {
 	console.log(data)
 })
 ```
 
 ### .queryInformation(callback) - Query Information
 ```javascript
-hr2000.queryInformation(function(data) {
+usb2000.queryInformation(function(data) {
 	console.log(data)
 })
 ```
@@ -89,11 +89,6 @@ readIrradianceCalibrationFactors()
 writeIrradianceCalibrationFactors()
 ```
 
-
-
-## Contributing
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
-
 ## Building
 ```shell
 $ grunt
@@ -105,7 +100,6 @@ $ grunt
 - Add some options to customize the data input/output
 - Verify all spectrometer functions
 - Add busy status while doing query
-- Add error return
 
 ## Release History
 - v0.1 - Started the first release
