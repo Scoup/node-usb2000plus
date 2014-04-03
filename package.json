@@ -1,7 +1,7 @@
 {
   "name": "usb2000plus",
   "description": "Module to comunicate with Spectrometer USB2000+",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "homepage": "https://github.com/scoup/node-usb2000plus",
   "author": {
     "name": "Léo Haddad M. C. Carneiro",
@@ -20,24 +20,16 @@
       "url": "https://github.com/Scoup/node-usb2000plus/blob/master/LICENSE-MIT"
     }
   ],
-  "main": "lib/usb2000plus",
+  "main": "usb2000plus",
   "engines": {
     "node": ">= 0.8.0"
-  },
-  "scripts": {
-    "test": "grunt nodeunit"
   },
   "dependencies": {
     "usb": "~0.3.5",
     "underscore": "~1.6.0"
   },
   "devDependencies": {
-    "grunt-contrib-jshint": "~0.6.4",
-    "grunt-contrib-nodeunit": "~0.2.0",
-    "grunt-contrib-watch": "~0.5.3",
-    "grunt-contrib-concat": "~0.3.0",
-    "grunt-contrib-uglify": "~0.2.2",
-    "grunt": "~0.4.4"
+
   },
   "readmeFilename": "Readme.md",
   "keywords": ["usb2000", "usb2000+", "usb2000plus"]

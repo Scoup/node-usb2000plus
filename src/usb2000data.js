@@ -3,6 +3,8 @@
  * All Spectometer specifications can be found on Oceanoptics site
  * @link http://www.oceanoptics.com/technical/engineering/OEM%20Data%20Sheet%20--%20USB2000+.pdf
  */
+var utilBytes = require('./utilBytes')
+
 function USB2000Data(callback) {
 	var self = this
 	this.errorTimeout = 5000
@@ -60,19 +62,17 @@ USB2000Data.prototype.convertData = function(data) {
 		var b2 = data[i+1]
 		// b2 = b2 ^ 0x20 //bit 13 flipped
 
-		var lsb = this.zeroFill(b1.toString(2), 8)
-		var msb = this.zeroFill(b2.toString(2), 8)
+		var lsb = utilBytes.zeroFill(b1.toString(2), 8)
+		var msb = utilBytes.zeroFill(b2.toString(2), 8)
 
 		var pixel = msb + lsb;
-		pixel = this.zeroFill(pixel, 16)
+		pixel = utilBytes.zeroFill(pixel, 16)
 		output.push(parseInt(pixel,2))
 		j++
 	}
 	this.output = this.output.concat(output)
 	return output
 }
-
-USB2000Data.prototype.zeroFill = factory.USB2000.prototype.zeroFill;
 
 USB2000Data.prototype.reverseBits = function(num, numBits) {
 	var reversedNum
@@ -83,3 +83,5 @@ USB2000Data.prototype.reverseBits = function(num, numBits) {
 	reversedNum = this.reverse(num >> numBits / 2, numBits / 2) | this.reverse((num & mask), numBits/2) << numBits/2;
 	return reversedNum
 }
+
+module.exports = USB2000Data

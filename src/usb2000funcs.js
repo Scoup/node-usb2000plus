@@ -57,3 +57,5 @@ USB2000Funcs.prototype.getByData = function(data) {
 USB2000Funcs.prototype.getFuncs = function() {
 	return this.pfuncs
 }
+
+module.exports = USB2000Funcs

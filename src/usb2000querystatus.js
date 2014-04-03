@@ -3,6 +3,7 @@
  * All Spectometer specifications can be found on Oceanoptics site
  * @link http://www.oceanoptics.com/technical/engineering/OEM%20Data%20Sheet%20--%20USB2000+.pdf
  */
+var utilBytes = require('./utilBytes')
 function USB2000QueryStatus(callback, data) {
 	var output = this.setData(data)
 	callback(null, output)
@@ -60,7 +61,7 @@ USB2000QueryStatus.prototype.getIntegrationTime = function(data) {
 	var output = []
 	var j = 0
 	for(var i = 5; i >= 2; i--){
-		output[j] = this.zeroFill(data[i].toString(16),2)
+		output[j] = utilBytes.zeroFill(data[i].toString(16),2)
 		j++
 	}
 
@@ -70,13 +71,11 @@ USB2000QueryStatus.prototype.getIntegrationTime = function(data) {
 
 USB2000QueryStatus.prototype.getNumberOfPixels = function(data) {
 	var output = []
-	output[0] = this.zeroFill(data[1].toString(16),2)
-	output[1] = this.zeroFill(data[0].toString(16),2)
+	output[0] = utilBytes.zeroFill(data[1].toString(16),2)
+	output[1] = utilBytes.zeroFill(data[0].toString(16),2)
 	var value = output.join('')
 	return parseInt(value, 16)
 }
-
-USB2000QueryStatus.prototype.zeroFill = factory.USB2000.prototype.zeroFill;
 
 /**
  * Return the data output
@@ -85,4 +84,5 @@ USB2000QueryStatus.prototype.getData = function() {
 	return this.output
 }
 
+module.exports = USB2000QueryStatus
 

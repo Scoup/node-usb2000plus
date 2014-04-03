@@ -22,6 +22,11 @@
 var us = require('underscore')
 var usb = require("usb")
 
+var USB2000Data = require('./usb2000data.js')
+var USB2000QueryStatus = require('./usb2000querystatus.js')
+var USB2000Funcs = require('./usb2000funcs.js')
+var utilBytes = require('./utilBytes')
+
 var USB2000Factory = function() {
 
 	var factory = this
@@ -120,7 +125,7 @@ var USB2000Factory = function() {
 		var self = this
 		var func = this.funcs.getByName('setIntegrationTime')
 		var bin = time.toString(2)
-		var bin = this.zeroFill(bin, 32)
+		var bin = utilBytes.zeroFill(bin, 32)
 		var buffer = new Buffer(4)
 		var j = 3
 		var joined = []
@@ -133,14 +138,6 @@ var USB2000Factory = function() {
 
 		this.genericFunction.call(this, null, func.data, buffer)
 		callback(null, null)
-	}
-
-	USB2000.prototype.zeroFill = function(number, width) {
-		width -= number.toString().length;
-	 	if (width > 0) {
-	    	return new Array( width + (/\./.test( number ) ? 2 : 1) ).join( '0' ) + number;
-		}
-		return number + ""; // always return a string
 	}
 
 	USB2000.prototype.queryStatus = function(callback) {
