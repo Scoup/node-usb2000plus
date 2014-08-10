@@ -18,12 +18,16 @@ var USB2000 = require('usb2000plus').USB2000;
 var usb2000plus = new USB2000()
 ```
 
+Works with hr2000+ or hr4000
+change on model options
+
 With options:
 ```javascript
 var USB2000 = require('usb2000plus').USB2000;
 var usb2000 = new USB2000({
 	VID: 0x2457,
-	PID: 0x101E
+	PID: 0x101E,
+	model: 'hr2000+'
 })
 ```
 Discovering the PID (product id) and VID (vendor id)

@@ -1,7 +1,7 @@
 {
   "name": "usb2000plus",
   "description": "Module to comunicate with Spectrometer USB2000+",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "homepage": "https://github.com/scoup/node-usb2000plus",
   "author": {
     "name": "Léo Haddad M. C. Carneiro",
@@ -32,5 +32,5 @@
 
   },
   "readmeFilename": "Readme.md",
-  "keywords": ["usb2000", "usb2000+", "usb2000plus"]
+  "keywords": ["usb2000", "usb2000+", "hr4000", "hr2000", "hr2000+", "hr2000plus", "usb2000plus"]
 }

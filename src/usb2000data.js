@@ -11,6 +11,7 @@ function USB2000Data(callback) {
 	this.totalFrames = 9
 	this.output = []
 	this.callback = callback ? callback : function() {};
+	this.model = 'hr4000'
 	this.counter = 0
 	this.timeout = setTimeout(function(){
 		var error = "Timeout on request " + self.errorTimeout + "ms"
@@ -57,22 +58,22 @@ USB2000Data.prototype.getData = function() {
  */
 USB2000Data.prototype.convertData = function(data) {
 	var size = data.length
-	var output = [size]
+	var output = []
 	if(size == 1) return
 	var j = 0;
 	for(var i = 0; i < size; i+=2) {
-		var b1 = data[i]
-		var b2 = data[i+1]
-		// b2 = b2 ^ 0x20 //bit 13 flipped
+		var lsb = data[i]
+		var msb = data[i+1]
+		if(this.model === 'hr2000+') {
+			msb = msb ^ 0x20 //bit 13 flipped
+		}
 
-		var lsb = utilBytes.zeroFill(b1.toString(2), 8)
-		var msb = utilBytes.zeroFill(b2.toString(2), 8)
+		var lsb = utilBytes.zeroFill(lsb.toString(2), 8)
+		var msb = utilBytes.zeroFill(msb.toString(2), 8)
 
 		var pixel = msb + lsb;
 		pixel = utilBytes.zeroFill(pixel, 16)
 		output.push(parseInt(pixel,2))
-		console.log('j:' + j ', i:' + i)
-		j++
 	}
 	this.output = this.output.concat(output)
 	return output
