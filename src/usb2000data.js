@@ -32,12 +32,15 @@ USB2000Data.prototype.clear = function() {
  */
 USB2000Data.prototype.addData = function(data) {
 	var self = this
-	data = this.convertData(data)
-	this.output.concat(data)
 	this.counter++
 	if(this.counter === this.totalFrames){
+		//this last data is the checksum
+		//@todo test the checksum!
 		clearTimeout(this.timeout)
 		this.callback(null, self.getData())
+	} else {
+		data = this.convertData(data)
+		this.output.concat(data)
 	}
 }
 
@@ -68,6 +71,7 @@ USB2000Data.prototype.convertData = function(data) {
 		var pixel = msb + lsb;
 		pixel = utilBytes.zeroFill(pixel, 16)
 		output.push(parseInt(pixel,2))
+		console.log('j:' + j ', i:' + i)
 		j++
 	}
 	this.output = this.output.concat(output)
