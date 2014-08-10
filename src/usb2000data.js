@@ -8,7 +8,7 @@ var utilBytes = require('./utilBytes')
 function USB2000Data(callback) {
 	var self = this
 	this.errorTimeout = 5000
-	this.totalFrames = 8
+	this.totalFrames = 9
 	this.output = []
 	this.callback = callback ? callback : function() {};
 	this.counter = 0
